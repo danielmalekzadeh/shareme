@@ -25,7 +25,10 @@ const Login = () => {
 
     client
       .createIfNotExists(doc)
-      .then(() => navigate("/", { replace: true }))
+      .then(() => {
+        localStorage.setItem("user", JSON.stringify(doc));
+        navigate("/", { replace: true });
+      })
       .catch((error) => console.log(error.message));
   };
   return (
